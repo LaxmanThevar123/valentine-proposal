@@ -14,10 +14,12 @@
             align-items: center;
             font-family: 'Arial', sans-serif;
             overflow: hidden;
+            touch-action: manipulation;
         }
         .container {
             text-align: center;
             animation: fadeIn 1.5s ease-in;
+            position: relative;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: scale(0.8); }
@@ -30,9 +32,17 @@
             margin: 0 auto 30px;
             animation: bounce 2s infinite;
         }
+        .bunny.angry {
+            animation: shake 0.3s infinite;
+        }
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(-5px) rotate(-2deg); }
+            75% { transform: translateX(5px) rotate(2deg); }
         }
         .head {
             width: 120px;
@@ -43,6 +53,10 @@
             top: 40px;
             left: 40px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: background 0.2s;
+        }
+        .bunny.angry .head {
+            background: #ff6b6b;
         }
         .ear {
             width: 30px;
@@ -52,6 +66,10 @@
             position: absolute;
             top: -20px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: background 0.2s;
+        }
+        .bunny.angry .ear {
+            background: #ff6b6b;
         }
         .ear.left { left: 25px; transform: rotate(-15deg); }
         .ear.right { right: 25px; transform: rotate(15deg); }
@@ -71,11 +89,17 @@
             border-radius: 50%;
             position: absolute;
             top: 60px;
-            animation: blink 3s infinite;
+            transition: all 0.2s;
         }
-        @keyframes blink {
-            0%, 96%, 100% { transform: scaleY(1); }
-            98% { transform: scaleY(0.1); }
+        .bunny.angry .eye {
+            width: 20px;
+            height: 8px;
+            border-radius: 0;
+            transform: rotate(-10deg);
+            background: #000;
+        }
+        .bunny.angry .eye.right {
+            transform: rotate(10deg);
         }
         .eye.left { left: 30px; }
         .eye.right { right: 30px; }
@@ -97,6 +121,13 @@
             position: absolute;
             top: 95px;
             left: 45px;
+            transition: all 0.2s;
+        }
+        .bunny.angry .mouth {
+            border-radius: 50% 50% 0 0;
+            border-top: 2px solid #333;
+            border-bottom: none;
+            top: 105px;
         }
         .body {
             width: 100px;
@@ -107,6 +138,10 @@
             top: 160px;
             left: 50px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: background 0.2s;
+        }
+        .bunny.angry .body {
+            background: #ff6b6b;
         }
         .arm {
             width: 25px;
@@ -116,19 +151,27 @@
             position: absolute;
             top: 170px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
         }
-        .arm.left { left: 30px; transform: rotate(-30deg); }
+        .bunny.angry .arm {
+            background: #ff6b6b;
+        }
+        .arm.left { 
+            left: 20px; 
+            transform: rotate(-40deg);
+        }
         .arm.right { 
-            right: 30px; 
-            transform: rotate(30deg);
+            right: 20px; 
+            transform: rotate(40deg);
         }
         .ring {
             position: absolute;
             top: 200px;
-            right: 10px;
+            right: 0;
             width: 40px;
             height: 40px;
             animation: sparkle 1.5s infinite;
+            transition: all 0.5s;
         }
         @keyframes sparkle {
             0%, 100% { transform: scale(1) rotate(0deg); }
@@ -163,16 +206,162 @@
             top: 15px;
             left: -6px;
         }
+        .knife {
+            position: absolute;
+            top: 200px;
+            left: 0;
+            width: 50px;
+            height: 60px;
+            transition: all 0.3s;
+        }
+        .knife-blade {
+            width: 15px;
+            height: 40px;
+            background: linear-gradient(to right, #c0c0c0, #e8e8e8, #c0c0c0);
+            position: absolute;
+            top: 0;
+            left: 17px;
+            clip-path: polygon(50% 0%, 100% 15%, 100% 100%, 0% 100%, 0% 15%);
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+        .knife-handle {
+            width: 12px;
+            height: 25px;
+            background: #8B4513;
+            position: absolute;
+            top: 38px;
+            left: 19px;
+            border-radius: 2px;
+        }
+        .lady-bunny {
+            position: absolute;
+            width: 150px;
+            height: 200px;
+            right: -200px;
+            top: 20px;
+            opacity: 0;
+            transition: all 0.5s ease-in-out;
+        }
+        .lady-bunny.show {
+            right: -180px;
+            opacity: 1;
+        }
+        .lady-head {
+            width: 100px;
+            height: 120px;
+            background: white;
+            border-radius: 50% 50% 45% 45%;
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .lady-ear {
+            width: 25px;
+            height: 70px;
+            background: white;
+            border-radius: 50% 50% 0 0;
+            position: absolute;
+            top: -15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .lady-ear.left { left: 20px; transform: rotate(-15deg); }
+        .lady-ear.right { right: 20px; transform: rotate(15deg); }
+        .lady-ear-inner {
+            width: 12px;
+            height: 40px;
+            background: #FFB6C1;
+            border-radius: 50% 50% 0 0;
+            position: absolute;
+            top: 10px;
+            left: 6.5px;
+        }
+        .lady-eye {
+            width: 10px;
+            height: 10px;
+            background: #333;
+            border-radius: 50%;
+            position: absolute;
+            top: 50px;
+        }
+        .lady-eye.left { left: 25px; }
+        .lady-eye.right { right: 25px; }
+        .lady-nose {
+            width: 12px;
+            height: 10px;
+            background: #FFB6C1;
+            border-radius: 50%;
+            position: absolute;
+            top: 70px;
+            left: 44px;
+        }
+        .lady-mouth {
+            width: 25px;
+            height: 12px;
+            border: 2px solid #333;
+            border-top: none;
+            border-radius: 0 0 50% 50%;
+            position: absolute;
+            top: 80px;
+            left: 37.5px;
+        }
+        .lady-body {
+            width: 80px;
+            height: 70px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 130px;
+            left: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .bow {
+            width: 30px;
+            height: 20px;
+            background: #ff1744;
+            position: absolute;
+            top: 5px;
+            left: 35px;
+            clip-path: polygon(50% 50%, 0% 0%, 30% 50%, 0% 100%, 50% 50%, 100% 100%, 70% 50%, 100% 0%);
+        }
         h1 {
             color: #ff1744;
-            font-size: 3em;
+            font-size: 2.5em;
             margin: 20px 0;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            animation: pulse 2s infinite;
         }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        button {
+            padding: 15px 40px;
+            font-size: 1.5em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            touch-action: manipulation;
+        }
+        #yesBtn {
+            background: #ff1744;
+            color: white;
+        }
+        #yesBtn:hover, #yesBtn:focus {
+            background: #ff4569;
+            transform: scale(1.1);
+        }
+        #noBtn {
+            background: #666;
+            color: white;
+        }
+        #noBtn:hover, #noBtn:focus {
+            background: #333;
+            transform: scale(1.1);
         }
         .hearts {
             position: fixed;
@@ -198,6 +387,28 @@
         .heart:nth-child(4) { left: 55%; animation-delay: 1.5s; }
         .heart:nth-child(5) { left: 70%; animation-delay: 0.5s; }
         .heart:nth-child(6) { left: 85%; animation-delay: 2.5s; }
+        .success-message {
+            display: none;
+            font-size: 2em;
+            color: #ff1744;
+            margin-top: 20px;
+            animation: fadeIn 1s;
+        }
+        .success-message.show {
+            display: block;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 2em; }
+            button { padding: 12px 30px; font-size: 1.2em; }
+            .bunny { transform: scale(0.9); }
+        }
     </style>
 </head>
 <body>
@@ -211,7 +422,7 @@
     </div>
     
     <div class="container">
-        <div class="bunny">
+        <div class="bunny" id="bunny">
             <div class="ear left"><div class="ear-inner"></div></div>
             <div class="ear right"><div class="ear-inner"></div></div>
             <div class="head">
@@ -223,14 +434,116 @@
             <div class="body"></div>
             <div class="arm left"></div>
             <div class="arm right"></div>
-            <div class="ring">
+            <div class="ring" id="ring">
                 <div class="ring-band">
                     <div class="diamond"></div>
                 </div>
             </div>
+            <div class="knife" id="knife">
+                <div class="knife-blade"></div>
+                <div class="knife-handle"></div>
+            </div>
+        </div>
+
+        <div class="lady-bunny" id="ladyBunny">
+            <div class="lady-ear left"><div class="lady-ear-inner"></div></div>
+            <div class="lady-ear right"><div class="lady-ear-inner"></div></div>
+            <div class="lady-head">
+                <div class="bow"></div>
+                <div class="lady-eye left"></div>
+                <div class="lady-eye right"></div>
+                <div class="lady-nose"></div>
+                <div class="lady-mouth"></div>
+            </div>
+            <div class="lady-body"></div>
         </div>
         
-        <h1>Will You Be My Valentine? 💕</h1>
+        <h1 id="question">Will You Be My Valentine? 💕</h1>
+        
+        <div class="buttons" id="buttons">
+            <button id="yesBtn" aria-label="Say yes to being my Valentine">Yes! 💕</button>
+            <button id="noBtn" aria-label="Say no">No</button>
+        </div>
+
+        <div class="success-message" id="successMsg">
+            Thank You! You Made Me The Happiest! 🐰💍💕
+        </div>
     </div>
+
+    <script>
+        const bunny = document.getElementById('bunny');
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const ladyBunny = document.getElementById('ladyBunny');
+        const ring = document.getElementById('ring');
+        const knife = document.getElementById('knife');
+        const buttons = document.getElementById('buttons');
+        const question = document.getElementById('question');
+        const successMsg = document.getElementById('successMsg');
+
+        let isAngry = false;
+        let hasAccepted = false;
+
+        // No button - make bunny angry
+        function makeAngry() {
+            if (!hasAccepted) {
+                bunny.classList.add('angry');
+                isAngry = true;
+            }
+        }
+
+        function makeHappy() {
+            if (!hasAccepted) {
+                bunny.classList.remove('angry');
+                isAngry = false;
+            }
+        }
+
+        // Yes button - show lady bunny and ring placement
+        function acceptProposal() {
+            if (hasAccepted) return;
+            hasAccepted = true;
+            
+            bunny.classList.remove('angry');
+            ladyBunny.classList.add('show');
+            
+            setTimeout(() => {
+                ring.style.transform = 'translateX(-120px) translateY(30px) scale(0.8)';
+                ring.style.animation = 'none';
+            }, 500);
+
+            setTimeout(() => {
+                buttons.style.display = 'none';
+                question.style.display = 'none';
+                successMsg.classList.add('show');
+            }, 1500);
+        }
+
+        // Desktop hover events
+        noBtn.addEventListener('mouseenter', makeAngry);
+        noBtn.addEventListener('mouseleave', makeHappy);
+        noBtn.addEventListener('focus', makeAngry);
+        noBtn.addEventListener('blur', makeHappy);
+
+        yesBtn.addEventListener('click', acceptProposal);
+        yesBtn.addEventListener('mouseenter', makeHappy);
+        yesBtn.addEventListener('focus', makeHappy);
+
+        // Mobile touch events
+        let noTouchTimer;
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            makeAngry();
+            noTouchTimer = setTimeout(makeHappy, 2000);
+        });
+        noBtn.addEventListener('touchend', () => {
+            clearTimeout(noTouchTimer);
+            setTimeout(makeHappy, 300);
+        });
+
+        yesBtn.addEventListener('touchstart', (e) => {
+            makeHappy();
+        });
+    </script>
 </body>
 </html>
