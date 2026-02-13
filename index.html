@@ -27,10 +27,13 @@
         }
         .bunny {
             position: relative;
-            width: 200px;
-            height: 250px;
+            width: 300px;
+            height: 350px;
             margin: 0 auto 30px;
             animation: bounce 2s infinite;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
         }
         .bunny.angry {
             animation: shake 0.3s infinite;
@@ -45,55 +48,58 @@
             75% { transform: translateX(5px) rotate(2deg); }
         }
         .head {
-            width: 120px;
-            height: 140px;
+            width: 180px;
+            height: 200px;
             background: white;
             border-radius: 50% 50% 45% 45%;
             position: absolute;
-            top: 40px;
-            left: 40px;
+            top: 60px;
+            left: 60px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: background 0.2s;
+            image-rendering: pixelated;
         }
         .bunny.angry .head {
             background: #ff6b6b;
         }
         .ear {
-            width: 30px;
-            height: 80px;
+            width: 45px;
+            height: 120px;
             background: white;
             border-radius: 50% 50% 0 0;
             position: absolute;
-            top: -20px;
+            top: -30px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: background 0.2s;
+            image-rendering: pixelated;
         }
         .bunny.angry .ear {
             background: #ff6b6b;
         }
-        .ear.left { left: 25px; transform: rotate(-15deg); }
-        .ear.right { right: 25px; transform: rotate(15deg); }
+        .ear.left { left: 35px; transform: rotate(-15deg); }
+        .ear.right { right: 35px; transform: rotate(15deg); }
         .ear-inner {
-            width: 15px;
-            height: 50px;
+            width: 22px;
+            height: 75px;
             background: #FFB6C1;
             border-radius: 50% 50% 0 0;
             position: absolute;
-            top: 10px;
-            left: 7.5px;
+            top: 15px;
+            left: 11.5px;
         }
         .eye {
-            width: 12px;
-            height: 12px;
+            width: 18px;
+            height: 18px;
             background: #333;
             border-radius: 50%;
             position: absolute;
-            top: 60px;
+            top: 90px;
             transition: all 0.2s;
+            image-rendering: pixelated;
         }
         .bunny.angry .eye {
-            width: 20px;
-            height: 8px;
+            width: 30px;
+            height: 12px;
             border-radius: 0;
             transform: rotate(-10deg);
             background: #000;
@@ -101,227 +107,240 @@
         .bunny.angry .eye.right {
             transform: rotate(10deg);
         }
-        .eye.left { left: 30px; }
-        .eye.right { right: 30px; }
+        .eye.left { left: 45px; }
+        .eye.right { right: 45px; }
         .nose {
-            width: 15px;
-            height: 12px;
+            width: 22px;
+            height: 18px;
             background: #FFB6C1;
             border-radius: 50%;
             position: absolute;
-            top: 85px;
-            left: 52.5px;
+            top: 125px;
+            left: 79px;
         }
         .mouth {
-            width: 30px;
-            height: 15px;
-            border: 2px solid #333;
+            width: 45px;
+            height: 22px;
+            border: 3px solid #333;
             border-top: none;
             border-radius: 0 0 50% 50%;
             position: absolute;
-            top: 95px;
-            left: 45px;
+            top: 142px;
+            left: 67.5px;
             transition: all 0.2s;
         }
         .bunny.angry .mouth {
             border-radius: 50% 50% 0 0;
-            border-top: 2px solid #333;
+            border-top: 3px solid #333;
             border-bottom: none;
-            top: 105px;
+            top: 155px;
         }
         .body {
-            width: 100px;
-            height: 80px;
+            width: 150px;
+            height: 120px;
             background: white;
             border-radius: 50%;
             position: absolute;
-            top: 160px;
-            left: 50px;
+            top: 240px;
+            left: 75px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: background 0.2s;
+            image-rendering: pixelated;
         }
         .bunny.angry .body {
             background: #ff6b6b;
         }
         .arm {
-            width: 25px;
-            height: 60px;
+            width: 38px;
+            height: 90px;
             background: white;
             border-radius: 50%;
             position: absolute;
-            top: 170px;
+            top: 255px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: all 0.3s;
+            image-rendering: pixelated;
         }
         .bunny.angry .arm {
             background: #ff6b6b;
         }
         .arm.left { 
-            left: 20px; 
+            left: 30px; 
             transform: rotate(-40deg);
         }
         .arm.right { 
-            right: 20px; 
+            right: 30px; 
             transform: rotate(40deg);
         }
         .ring {
             position: absolute;
-            top: 200px;
+            top: 300px;
             right: 0;
-            width: 40px;
-            height: 40px;
+            width: 60px;
+            height: 60px;
             animation: sparkle 1.5s infinite;
             transition: all 0.5s;
+            image-rendering: pixelated;
         }
         @keyframes sparkle {
             0%, 100% { transform: scale(1) rotate(0deg); }
             50% { transform: scale(1.2) rotate(10deg); }
         }
         .ring-band {
-            width: 30px;
-            height: 30px;
-            border: 4px solid gold;
+            width: 45px;
+            height: 45px;
+            border: 6px solid gold;
             border-radius: 50%;
             position: relative;
         }
         .diamond {
             width: 0;
             height: 0;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            border-bottom: 15px solid #ff1744;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-bottom: 22px solid #ff1744;
             position: absolute;
-            top: -18px;
-            left: 3px;
+            top: -27px;
+            left: 4.5px;
             filter: drop-shadow(0 0 5px #ff1744);
         }
         .diamond::after {
             content: '';
             width: 0;
             height: 0;
-            border-left: 6px solid transparent;
-            border-right: 6px solid transparent;
-            border-top: 8px solid #ff1744;
+            border-left: 9px solid transparent;
+            border-right: 9px solid transparent;
+            border-top: 12px solid #ff1744;
             position: absolute;
-            top: 15px;
-            left: -6px;
+            top: 22px;
+            left: -9px;
         }
         .knife {
             position: absolute;
-            top: 200px;
+            top: 300px;
             left: 0;
-            width: 50px;
-            height: 60px;
-            transition: all 0.3s;
+            width: 75px;
+            height: 90px;
+            transition: all 0.8s;
+            image-rendering: pixelated;
+        }
+        .knife.throw {
+            transform: translateX(-300px) translateY(-200px) rotate(360deg);
+            opacity: 0;
         }
         .knife-blade {
-            width: 15px;
-            height: 40px;
+            width: 22px;
+            height: 60px;
             background: linear-gradient(to right, #c0c0c0, #e8e8e8, #c0c0c0);
             position: absolute;
             top: 0;
-            left: 17px;
+            left: 26px;
             clip-path: polygon(50% 0%, 100% 15%, 100% 100%, 0% 100%, 0% 15%);
             box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
         }
         .knife-handle {
-            width: 12px;
-            height: 25px;
+            width: 18px;
+            height: 38px;
             background: #8B4513;
             position: absolute;
-            top: 38px;
-            left: 19px;
+            top: 57px;
+            left: 28px;
             border-radius: 2px;
         }
         .lady-bunny {
             position: absolute;
-            width: 150px;
-            height: 200px;
-            right: -200px;
-            top: 20px;
+            width: 225px;
+            height: 300px;
+            right: -300px;
+            top: 30px;
             opacity: 0;
             transition: all 0.5s ease-in-out;
+            image-rendering: pixelated;
         }
         .lady-bunny.show {
-            right: -180px;
+            right: -270px;
             opacity: 1;
         }
         .lady-head {
-            width: 100px;
-            height: 120px;
+            width: 150px;
+            height: 180px;
             background: white;
             border-radius: 50% 50% 45% 45%;
             position: absolute;
-            top: 20px;
-            left: 25px;
+            top: 30px;
+            left: 37px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            image-rendering: pixelated;
         }
         .lady-ear {
-            width: 25px;
-            height: 70px;
+            width: 38px;
+            height: 105px;
             background: white;
             border-radius: 50% 50% 0 0;
             position: absolute;
-            top: -15px;
+            top: -22px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            image-rendering: pixelated;
         }
-        .lady-ear.left { left: 20px; transform: rotate(-15deg); }
-        .lady-ear.right { right: 20px; transform: rotate(15deg); }
+        .lady-ear.left { left: 30px; transform: rotate(-15deg); }
+        .lady-ear.right { right: 30px; transform: rotate(15deg); }
         .lady-ear-inner {
-            width: 12px;
-            height: 40px;
+            width: 18px;
+            height: 60px;
             background: #FFB6C1;
             border-radius: 50% 50% 0 0;
             position: absolute;
-            top: 10px;
-            left: 6.5px;
+            top: 15px;
+            left: 10px;
         }
         .lady-eye {
-            width: 10px;
-            height: 10px;
+            width: 15px;
+            height: 15px;
             background: #333;
             border-radius: 50%;
             position: absolute;
-            top: 50px;
+            top: 75px;
+            image-rendering: pixelated;
         }
-        .lady-eye.left { left: 25px; }
-        .lady-eye.right { right: 25px; }
+        .lady-eye.left { left: 37px; }
+        .lady-eye.right { right: 37px; }
         .lady-nose {
-            width: 12px;
-            height: 10px;
+            width: 18px;
+            height: 15px;
             background: #FFB6C1;
             border-radius: 50%;
             position: absolute;
-            top: 70px;
-            left: 44px;
+            top: 105px;
+            left: 66px;
         }
         .lady-mouth {
-            width: 25px;
-            height: 12px;
-            border: 2px solid #333;
+            width: 38px;
+            height: 18px;
+            border: 3px solid #333;
             border-top: none;
             border-radius: 0 0 50% 50%;
             position: absolute;
-            top: 80px;
-            left: 37.5px;
+            top: 120px;
+            left: 56px;
         }
         .lady-body {
-            width: 80px;
-            height: 70px;
+            width: 120px;
+            height: 105px;
             background: white;
             border-radius: 50%;
             position: absolute;
-            top: 130px;
-            left: 35px;
+            top: 195px;
+            left: 52px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            image-rendering: pixelated;
         }
         .bow {
-            width: 30px;
-            height: 20px;
+            width: 45px;
+            height: 30px;
             background: #ff1744;
             position: absolute;
-            top: 5px;
-            left: 35px;
+            top: 8px;
+            left: 52px;
             clip-path: polygon(50% 50%, 0% 0%, 30% 50%, 0% 100%, 50% 50%, 100% 100%, 70% 50%, 100% 0%);
         }
         h1 {
@@ -508,8 +527,9 @@
             ladyBunny.classList.add('show');
             
             setTimeout(() => {
-                ring.style.transform = 'translateX(-120px) translateY(30px) scale(0.8)';
+                ring.style.transform = 'translateX(-180px) translateY(45px) scale(0.8)';
                 ring.style.animation = 'none';
+                knife.classList.add('throw');
             }, 500);
 
             setTimeout(() => {
