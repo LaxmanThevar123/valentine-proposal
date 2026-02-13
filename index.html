@@ -12,7 +12,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Courier New', monospace;
             overflow: hidden;
             touch-action: manipulation;
         }
@@ -25,329 +25,112 @@
             from { opacity: 0; transform: scale(0.8); }
             to { opacity: 1; transform: scale(1); }
         }
-        .bunny {
-            position: relative;
-            width: 300px;
-            height: 350px;
-            margin: 0 auto 30px;
-            animation: bounce 2s infinite;
+        .pixel-art {
             image-rendering: pixelated;
             image-rendering: -moz-crisp-edges;
             image-rendering: crisp-edges;
         }
-        .bunny.angry {
+        .bunny-container {
+            position: relative;
+            display: inline-block;
+            margin: 0 auto 30px;
+            animation: bounce 2s infinite;
+        }
+        .bunny-container.angry {
             animation: shake 0.3s infinite;
         }
         @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            0%, 100% { transform: translateY(0) scale(2); }
+            50% { transform: translateY(-20px) scale(2); }
         }
         @keyframes shake {
-            0%, 100% { transform: translateX(0) rotate(0deg); }
-            25% { transform: translateX(-5px) rotate(-2deg); }
-            75% { transform: translateX(5px) rotate(2deg); }
+            0%, 100% { transform: translateX(0) scale(2); }
+            25% { transform: translateX(-5px) scale(2); }
+            75% { transform: translateX(5px) scale(2); }
         }
-        .head {
-            width: 180px;
-            height: 200px;
-            background: white;
-            border-radius: 50% 50% 45% 45%;
+        svg {
+            display: block;
+        }
+        .items-container {
             position: absolute;
-            top: 60px;
-            left: 60px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: background 0.2s;
-            image-rendering: pixelated;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
-        .bunny.angry .head {
-            background: #ff6b6b;
-        }
-        .ear {
-            width: 45px;
-            height: 120px;
-            background: white;
-            border-radius: 50% 50% 0 0;
+        .ring-svg {
             position: absolute;
-            top: -30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: background 0.2s;
-            image-rendering: pixelated;
-        }
-        .bunny.angry .ear {
-            background: #ff6b6b;
-        }
-        .ear.left { left: 35px; transform: rotate(-15deg); }
-        .ear.right { right: 35px; transform: rotate(15deg); }
-        .ear-inner {
-            width: 22px;
-            height: 75px;
-            background: #FFB6C1;
-            border-radius: 50% 50% 0 0;
-            position: absolute;
-            top: 15px;
-            left: 11.5px;
-        }
-        .eye {
-            width: 18px;
-            height: 18px;
-            background: #333;
-            border-radius: 50%;
-            position: absolute;
-            top: 90px;
-            transition: all 0.2s;
-            image-rendering: pixelated;
-        }
-        .bunny.angry .eye {
-            width: 30px;
-            height: 12px;
-            border-radius: 0;
-            transform: rotate(-10deg);
-            background: #000;
-        }
-        .bunny.angry .eye.right {
-            transform: rotate(10deg);
-        }
-        .eye.left { left: 45px; }
-        .eye.right { right: 45px; }
-        .nose {
-            width: 22px;
-            height: 18px;
-            background: #FFB6C1;
-            border-radius: 50%;
-            position: absolute;
-            top: 125px;
-            left: 79px;
-        }
-        .mouth {
-            width: 45px;
-            height: 22px;
-            border: 3px solid #333;
-            border-top: none;
-            border-radius: 0 0 50% 50%;
-            position: absolute;
-            top: 142px;
-            left: 67.5px;
-            transition: all 0.2s;
-        }
-        .bunny.angry .mouth {
-            border-radius: 50% 50% 0 0;
-            border-top: 3px solid #333;
-            border-bottom: none;
-            top: 155px;
-        }
-        .body {
-            width: 150px;
-            height: 120px;
-            background: white;
-            border-radius: 50%;
-            position: absolute;
-            top: 240px;
-            left: 75px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: background 0.2s;
-            image-rendering: pixelated;
-        }
-        .bunny.angry .body {
-            background: #ff6b6b;
-        }
-        .arm {
-            width: 38px;
-            height: 90px;
-            background: white;
-            border-radius: 50%;
-            position: absolute;
-            top: 255px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-            image-rendering: pixelated;
-        }
-        .bunny.angry .arm {
-            background: #ff6b6b;
-        }
-        .arm.left { 
-            left: 30px; 
-            transform: rotate(-40deg);
-        }
-        .arm.right { 
-            right: 30px; 
-            transform: rotate(40deg);
-        }
-        .ring {
-            position: absolute;
-            top: 300px;
-            right: 0;
-            width: 60px;
-            height: 60px;
+            top: 50px;
+            right: -20px;
             animation: sparkle 1.5s infinite;
-            transition: all 0.5s;
-            image-rendering: pixelated;
+            transition: all 1.2s ease-in-out;
+        }
+        .ring-svg.fly {
+            transform: translateX(200px) translateY(30px);
+            animation: none;
         }
         @keyframes sparkle {
             0%, 100% { transform: scale(1) rotate(0deg); }
             50% { transform: scale(1.2) rotate(10deg); }
         }
-        .ring-band {
-            width: 45px;
-            height: 45px;
-            border: 6px solid gold;
-            border-radius: 50%;
-            position: relative;
-        }
-        .diamond {
-            width: 0;
-            height: 0;
-            border-left: 12px solid transparent;
-            border-right: 12px solid transparent;
-            border-bottom: 22px solid #ff1744;
+        .knife-svg {
             position: absolute;
-            top: -27px;
-            left: 4.5px;
-            filter: drop-shadow(0 0 5px #ff1744);
-        }
-        .diamond::after {
-            content: '';
-            width: 0;
-            height: 0;
-            border-left: 9px solid transparent;
-            border-right: 9px solid transparent;
-            border-top: 12px solid #ff1744;
-            position: absolute;
-            top: 22px;
-            left: -9px;
-        }
-        .knife {
-            position: absolute;
-            top: 300px;
-            left: 0;
-            width: 75px;
-            height: 90px;
+            top: 50px;
+            left: -20px;
             transition: all 0.8s;
-            image-rendering: pixelated;
         }
-        .knife.throw {
-            transform: translateX(-300px) translateY(-200px) rotate(360deg);
+        .knife-svg.throw {
+            transform: translateX(-200px) translateY(-150px) rotate(360deg);
             opacity: 0;
         }
-        .knife-blade {
-            width: 22px;
-            height: 60px;
-            background: linear-gradient(to right, #c0c0c0, #e8e8e8, #c0c0c0);
+        .lady-bunny-container {
             position: absolute;
+            right: -250px;
             top: 0;
-            left: 26px;
-            clip-path: polygon(50% 0%, 100% 15%, 100% 100%, 0% 100%, 0% 15%);
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-        }
-        .knife-handle {
-            width: 18px;
-            height: 38px;
-            background: #8B4513;
-            position: absolute;
-            top: 57px;
-            left: 28px;
-            border-radius: 2px;
-        }
-        .lady-bunny {
-            position: absolute;
-            width: 225px;
-            height: 300px;
-            right: -300px;
-            top: 30px;
             opacity: 0;
             transition: all 0.5s ease-in-out;
-            image-rendering: pixelated;
         }
-        .lady-bunny.show {
-            right: -270px;
+        .lady-bunny-container.show {
+            right: -120px;
             opacity: 1;
         }
-        .lady-head {
-            width: 150px;
-            height: 180px;
-            background: white;
-            border-radius: 50% 50% 45% 45%;
+        .lady-ring {
             position: absolute;
-            top: 30px;
-            left: 37px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            image-rendering: pixelated;
+            top: 80px;
+            left: 50px;
+            opacity: 0;
+            transition: all 0.3s;
         }
-        .lady-ear {
-            width: 38px;
-            height: 105px;
-            background: white;
-            border-radius: 50% 50% 0 0;
-            position: absolute;
-            top: -22px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            image-rendering: pixelated;
+        .lady-ring.show {
+            opacity: 1;
         }
-        .lady-ear.left { left: 30px; transform: rotate(-15deg); }
-        .lady-ear.right { right: 30px; transform: rotate(15deg); }
-        .lady-ear-inner {
-            width: 18px;
-            height: 60px;
-            background: #FFB6C1;
-            border-radius: 50% 50% 0 0;
+        .lady-bouquet {
             position: absolute;
-            top: 15px;
+            top: 50px;
             left: 10px;
+            opacity: 0;
+            transition: all 0.3s;
         }
-        .lady-eye {
-            width: 15px;
-            height: 15px;
-            background: #333;
-            border-radius: 50%;
-            position: absolute;
-            top: 75px;
-            image-rendering: pixelated;
+        .lady-bouquet.show {
+            opacity: 1;
         }
-        .lady-eye.left { left: 37px; }
-        .lady-eye.right { right: 37px; }
-        .lady-nose {
-            width: 18px;
-            height: 15px;
-            background: #FFB6C1;
-            border-radius: 50%;
+        .bouquet-svg {
             position: absolute;
-            top: 105px;
-            left: 66px;
+            top: 50px;
+            right: -20px;
+            opacity: 1;
+            transition: all 1.2s ease-in-out;
         }
-        .lady-mouth {
-            width: 38px;
-            height: 18px;
-            border: 3px solid #333;
-            border-top: none;
-            border-radius: 0 0 50% 50%;
-            position: absolute;
-            top: 120px;
-            left: 56px;
-        }
-        .lady-body {
-            width: 120px;
-            height: 105px;
-            background: white;
-            border-radius: 50%;
-            position: absolute;
-            top: 195px;
-            left: 52px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            image-rendering: pixelated;
-        }
-        .bow {
-            width: 45px;
-            height: 30px;
-            background: #ff1744;
-            position: absolute;
-            top: 8px;
-            left: 52px;
-            clip-path: polygon(50% 50%, 0% 0%, 30% 50%, 0% 100%, 50% 50%, 100% 100%, 70% 50%, 100% 0%);
+        .bouquet-svg.fly {
+            transform: translateX(180px) translateY(0px);
         }
         h1 {
             color: #ff1744;
             font-size: 2.5em;
             margin: 20px 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            text-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
         }
         .buttons {
             display: flex;
@@ -358,13 +141,18 @@
         button {
             padding: 15px 40px;
             font-size: 1.5em;
-            border: none;
-            border-radius: 50px;
+            border: 4px solid #000;
+            border-radius: 0;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.1s;
             font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            font-family: 'Courier New', monospace;
+            box-shadow: 5px 5px 0px rgba(0,0,0,0.3);
             touch-action: manipulation;
+        }
+        button:active {
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+            transform: translate(3px, 3px);
         }
         #yesBtn {
             background: #ff1744;
@@ -372,7 +160,6 @@
         }
         #yesBtn:hover, #yesBtn:focus {
             background: #ff4569;
-            transform: scale(1.1);
         }
         #noBtn {
             background: #666;
@@ -380,7 +167,6 @@
         }
         #noBtn:hover, #noBtn:focus {
             background: #333;
-            transform: scale(1.1);
         }
         .hearts {
             position: fixed;
@@ -412,6 +198,9 @@
             color: #ff1744;
             margin-top: 20px;
             animation: fadeIn 1s;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            text-shadow: 3px 3px 0px rgba(0,0,0,0.2);
         }
         .success-message.show {
             display: block;
@@ -426,7 +215,15 @@
         @media (max-width: 600px) {
             h1 { font-size: 2em; }
             button { padding: 12px 30px; font-size: 1.2em; }
-            .bunny { transform: scale(0.9); }
+            @keyframes bounce {
+                0%, 100% { transform: translateY(0) scale(1.8); }
+                50% { transform: translateY(-20px) scale(1.8); }
+            }
+            @keyframes shake {
+                0%, 100% { transform: translateX(0) scale(1.8); }
+                25% { transform: translateX(-5px) scale(1.8); }
+                75% { transform: translateX(5px) scale(1.8); }
+            }
         }
     </style>
 </head>
@@ -441,40 +238,141 @@
     </div>
     
     <div class="container">
-        <div class="bunny" id="bunny">
-            <div class="ear left"><div class="ear-inner"></div></div>
-            <div class="ear right"><div class="ear-inner"></div></div>
-            <div class="head">
-                <div class="eye left"></div>
-                <div class="eye right"></div>
-                <div class="nose"></div>
-                <div class="mouth"></div>
-            </div>
-            <div class="body"></div>
-            <div class="arm left"></div>
-            <div class="arm right"></div>
-            <div class="ring" id="ring">
-                <div class="ring-band">
-                    <div class="diamond"></div>
-                </div>
-            </div>
-            <div class="knife" id="knife">
-                <div class="knife-blade"></div>
-                <div class="knife-handle"></div>
+        <div class="bunny-container" id="bunnyContainer">
+            <!-- Main Bunny Pixel Art -->
+            <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" class="pixel-art" id="bunnySvg">
+                <!-- Ears -->
+                <rect x="25" y="5" width="10" height="5" fill="white"/>
+                <rect x="25" y="10" width="10" height="15" fill="white"/>
+                <rect x="28" y="12" width="4" height="10" fill="#FFB6C1"/>
+                
+                <rect x="65" y="5" width="10" height="5" fill="white"/>
+                <rect x="65" y="10" width="10" height="15" fill="white"/>
+                <rect x="68" y="12" width="4" height="10" fill="#FFB6C1"/>
+                
+                <!-- Head -->
+                <rect x="20" y="25" width="60" height="40" fill="white"/>
+                
+                <!-- Eyes -->
+                <rect x="30" y="35" width="8" height="8" fill="#333" id="leftEye"/>
+                <rect x="62" y="35" width="8" height="8" fill="#333" id="rightEye"/>
+                
+                <!-- Nose -->
+                <rect x="47" y="48" width="6" height="6" fill="#FFB6C1"/>
+                
+                <!-- Mouth -->
+                <rect x="42" y="56" width="4" height="4" fill="#333" id="mouthLeft"/>
+                <rect x="54" y="56" width="4" height="4" fill="#333" id="mouthRight"/>
+                <rect x="46" y="58" width="8" height="4" fill="#333" id="mouthBottom"/>
+                
+                <!-- Body -->
+                <rect x="30" y="65" width="40" height="30" fill="white"/>
+            </svg>
+
+            <div class="items-container">
+                <!-- Ring -->
+                <svg width="30" height="30" class="ring-svg pixel-art" id="ringSvg">
+                    <rect x="8" y="15" width="14" height="10" fill="gold"/>
+                    <rect x="10" y="17" width="10" height="6" fill="none"/>
+                    <rect x="13" y="8" width="4" height="8" fill="#ff1744"/>
+                    <rect x="12" y="10" width="6" height="2" fill="#ff1744"/>
+                </svg>
+
+                <!-- Flower Bouquet -->
+                <svg width="40" height="50" class="bouquet-svg pixel-art" id="bouquetSvg">
+                    <!-- Stems -->
+                    <rect x="10" y="25" width="3" height="20" fill="#228B22"/>
+                    <rect x="17" y="28" width="3" height="17" fill="#228B22"/>
+                    <rect x="24" y="26" width="3" height="19" fill="#228B22"/>
+                    
+                    <!-- Flowers -->
+                    <rect x="8" y="20" width="7" height="7" fill="#ff1744"/>
+                    <rect x="15" y="23" width="7" height="7" fill="#ff69b4"/>
+                    <rect x="22" y="21" width="7" height="7" fill="#ff1744"/>
+                    
+                    <!-- Flower centers -->
+                    <rect x="10" y="23" width="3" height="3" fill="#FFD700"/>
+                    <rect x="17" y="26" width="3" height="3" fill="#FFD700"/>
+                    <rect x="24" y="24" width="3" height="3" fill="#FFD700"/>
+                    
+                    <!-- Leaves -->
+                    <rect x="7" y="30" width="4" height="3" fill="#32CD32"/>
+                    <rect x="26" y="32" width="4" height="3" fill="#32CD32"/>
+                </svg>
+
+                <!-- Knife -->
+                <svg width="30" height="40" class="knife-svg pixel-art" id="knifeSvg">
+                    <rect x="12" y="0" width="6" height="20" fill="#c0c0c0"/>
+                    <rect x="10" y="2" width="2" height="16" fill="#e8e8e8"/>
+                    <rect x="11" y="20" width="8" height="15" fill="#8B4513"/>
+                </svg>
             </div>
         </div>
 
-        <div class="lady-bunny" id="ladyBunny">
-            <div class="lady-ear left"><div class="lady-ear-inner"></div></div>
-            <div class="lady-ear right"><div class="lady-ear-inner"></div></div>
-            <div class="lady-head">
-                <div class="bow"></div>
-                <div class="lady-eye left"></div>
-                <div class="lady-eye right"></div>
-                <div class="lady-nose"></div>
-                <div class="lady-mouth"></div>
-            </div>
-            <div class="lady-body"></div>
+        <!-- Lady Bunny -->
+        <div class="lady-bunny-container" id="ladyBunny">
+            <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" class="pixel-art" style="transform: scale(2);">
+                <!-- Ears -->
+                <rect x="25" y="5" width="10" height="5" fill="white"/>
+                <rect x="25" y="10" width="10" height="15" fill="white"/>
+                <rect x="28" y="12" width="4" height="10" fill="#FFB6C1"/>
+                
+                <rect x="65" y="5" width="10" height="5" fill="white"/>
+                <rect x="65" y="10" width="10" height="15" fill="white"/>
+                <rect x="68" y="12" width="4" height="10" fill="#FFB6C1"/>
+                
+                <!-- Bow -->
+                <rect x="45" y="8" width="10" height="6" fill="#ff1744"/>
+                <rect x="42" y="10" width="4" height="4" fill="#ff1744"/>
+                <rect x="54" y="10" width="4" height="4" fill="#ff1744"/>
+                
+                <!-- Head -->
+                <rect x="20" y="25" width="60" height="40" fill="white"/>
+                
+                <!-- Eyes -->
+                <rect x="30" y="35" width="8" height="8" fill="#333"/>
+                <rect x="62" y="35" width="8" height="8" fill="#333"/>
+                
+                <!-- Nose -->
+                <rect x="47" y="48" width="6" height="6" fill="#FFB6C1"/>
+                
+                <!-- Smile -->
+                <rect x="42" y="56" width="4" height="4" fill="#333"/>
+                <rect x="54" y="56" width="4" height="4" fill="#333"/>
+                <rect x="46" y="58" width="8" height="4" fill="#333"/>
+                
+                <!-- Body -->
+                <rect x="30" y="65" width="40" height="30" fill="white"/>
+            </svg>
+            
+            <!-- Ring on lady's finger -->
+            <svg width="20" height="20" class="lady-ring pixel-art" id="ladyRing">
+                <rect x="6" y="10" width="8" height="6" fill="gold"/>
+                <rect x="8" y="5" width="4" height="6" fill="#ff1744"/>
+            </svg>
+            
+            <!-- Bouquet in lady's hand -->
+            <svg width="40" height="50" class="lady-bouquet pixel-art" id="ladyBouquet">
+                <!-- Stems -->
+                <rect x="10" y="25" width="3" height="20" fill="#228B22"/>
+                <rect x="17" y="28" width="3" height="17" fill="#228B22"/>
+                <rect x="24" y="26" width="3" height="19" fill="#228B22"/>
+                
+                <!-- Flowers -->
+                <rect x="8" y="20" width="7" height="7" fill="#ff1744"/>
+                <rect x="15" y="23" width="7" height="7" fill="#ff69b4"/>
+                <rect x="22" y="21" width="7" height="7" fill="#ff1744"/>
+                
+                <!-- Flower centers -->
+                <rect x="10" y="23" width="3" height="3" fill="#FFD700"/>
+                <rect x="17" y="26" width="3" height="3" fill="#FFD700"/>
+                <rect x="24" y="24" width="3" height="3" fill="#FFD700"/>
+                
+                <!-- Leaves -->
+                <rect x="7" y="30" width="4" height="3" fill="#32CD32"/>
+                <rect x="26" y="32" width="4" height="3" fill="#32CD32"/>
+            </svg>
+            
         </div>
         
         <h1 id="question">Will You Be My Valentine? 💕</h1>
@@ -490,47 +388,99 @@
     </div>
 
     <script>
-        const bunny = document.getElementById('bunny');
+        const bunnyContainer = document.getElementById('bunnyContainer');
+        const bunnySvg = document.getElementById('bunnySvg');
         const yesBtn = document.getElementById('yesBtn');
         const noBtn = document.getElementById('noBtn');
         const ladyBunny = document.getElementById('ladyBunny');
-        const ring = document.getElementById('ring');
-        const knife = document.getElementById('knife');
+        const ringSvg = document.getElementById('ringSvg');
+        const knifeSvg = document.getElementById('knifeSvg');
         const buttons = document.getElementById('buttons');
         const question = document.getElementById('question');
         const successMsg = document.getElementById('successMsg');
+        
+        const leftEye = document.getElementById('leftEye');
+        const rightEye = document.getElementById('rightEye');
+        const mouthLeft = document.getElementById('mouthLeft');
+        const mouthRight = document.getElementById('mouthRight');
+        const mouthBottom = document.getElementById('mouthBottom');
 
         let isAngry = false;
         let hasAccepted = false;
 
-        // No button - make bunny angry
+        // Make bunny angry
         function makeAngry() {
             if (!hasAccepted) {
-                bunny.classList.add('angry');
+                bunnyContainer.classList.add('angry');
+                
+                // Change to red
+                bunnySvg.querySelectorAll('rect[fill="white"]').forEach(rect => {
+                    rect.setAttribute('data-original', 'white');
+                    rect.setAttribute('fill', '#ff6b6b');
+                });
+                
+                // Angry eyes (narrowed)
+                leftEye.setAttribute('y', '38');
+                leftEye.setAttribute('height', '4');
+                rightEye.setAttribute('y', '38');
+                rightEye.setAttribute('height', '4');
+                
+                // Angry mouth (frown)
+                mouthBottom.setAttribute('y', '54');
+                
                 isAngry = true;
             }
         }
 
         function makeHappy() {
             if (!hasAccepted) {
-                bunny.classList.remove('angry');
+                bunnyContainer.classList.remove('angry');
+                
+                // Change back to white
+                bunnySvg.querySelectorAll('rect[data-original="white"]').forEach(rect => {
+                    rect.setAttribute('fill', 'white');
+                    rect.removeAttribute('data-original');
+                });
+                
+                // Normal eyes
+                leftEye.setAttribute('y', '35');
+                leftEye.setAttribute('height', '8');
+                rightEye.setAttribute('y', '35');
+                rightEye.setAttribute('height', '8');
+                
+                // Normal mouth
+                mouthBottom.setAttribute('y', '58');
+                
                 isAngry = false;
             }
         }
 
-        // Yes button - show lady bunny and ring placement
+        // Accept proposal
         function acceptProposal() {
             if (hasAccepted) return;
             hasAccepted = true;
             
-            bunny.classList.remove('angry');
+            makeHappy();
             ladyBunny.classList.add('show');
             
             setTimeout(() => {
-                ring.style.transform = 'translateX(-180px) translateY(45px) scale(0.8)';
-                ring.style.animation = 'none';
-                knife.classList.add('throw');
+                // Fly ring and bouquet to lady bunny
+                ringSvg.classList.add('fly');
+                document.getElementById('bouquetSvg').classList.add('fly');
+                
+                // Throw knife
+                knifeSvg.classList.add('throw');
             }, 500);
+            
+            setTimeout(() => {
+                // Hide flying items
+                ringSvg.style.opacity = '0';
+                document.getElementById('bouquetSvg').style.opacity = '0';
+                
+                // Show ring on lady's finger and bouquet
+                document.getElementById('ladyRing').classList.add('show');
+                document.getElementById('ladyBouquet').classList.add('show');
+            }, 1700);
 
             setTimeout(() => {
                 buttons.style.display = 'none';
